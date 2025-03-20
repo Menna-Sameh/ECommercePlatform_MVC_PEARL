@@ -1,0 +1,9 @@
+﻿@model DataAcessLayer.Models.Product
+
+<h2>Are you sure you want to delete @Model.Name?</h2>
+<form asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Yes, Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
+

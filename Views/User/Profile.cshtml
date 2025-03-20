@@ -1,0 +1,21 @@
+﻿@model DataAcessLayer.Models.ApplicationUser
+
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<h2 class="text-center">Profile</h2>
+
+<div class="card p-4">
+    <h4>Personal Information </h4>
+    <hr>
+    <p><strong>Name:</strong> @Model.FullName</p>
+    <p><strong>E-mail: </strong> @Model.Email</p>
+    <p><strong>Phone Number:</strong> @Model.PhoneNumber</p>
+
+    <a class="btn btn-primary" asp-controller="User" asp-action="EditProfile">تعديل البيانات</a>
+</div>
+
+<div class="mt-4">
+    <a class="btn btn-secondary" asp-controller="User" asp-action="OrderHistory">عرض سجل الطلبات</a>
+</div>

@@ -1,0 +1,182 @@
+﻿@* <div class="banner-container"> *@
+@*     <img src="~/images/Dashboard.webp" alt="PEARL - Skin Care Shop" class="banner-img" /> *@
+@* </div> *@
+@* <style> *@
+@*     .banner-img{ *@
+@*         width:100%; *@
+@*         height:100%; *@
+@*     } *@
+
+@* </style> *@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skincare Shop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f3ee;
+            color: #4a3f35;
+        }
+
+        header {
+            background-color: #d8b6a4;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+            nav h1 {
+                margin: 0;
+                color: #fff;
+            }
+
+            nav ul {
+                list-style: none;
+                display: flex;
+                padding: 0;
+            }
+
+                nav ul li {
+                    margin: 0 15px;
+                }
+
+                    nav ul li a {
+                        text-decoration: none;
+                        color: #fff;
+                    }
+
+        .hero {
+            text-align: center;
+            padding: 50px;
+            background: url('hero-image.jpg') no-repeat center center/cover;
+            color: white;
+        }
+
+            .hero button {
+                background-color: #b48a78;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                cursor: pointer;
+            }
+
+        .services, .about, .gallery {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .service-list {
+            display: flex;
+            justify-content: center;
+        }
+
+        .service {
+            margin: 20px;
+            max-width: 250px;
+        }
+
+            .service img {
+                width: 100%;
+                border-radius: 10px;
+            }
+
+        .gallery-images {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .gallery img {
+            width: 150px;
+            height: 150px;
+            border-radius: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #d8b6a4;
+            color: white;
+        }
+
+        .banner-img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Skincare Shop</h1>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="hero">
+            <h2>Discover the Beauty of Personalized Skincare</h2>
+            <p>Get the best skincare products tailored just for you!</p>
+            <button>Shop Now</button>
+        </div>
+    </header>
+    <div class="banner-container">
+        <img src="~/images/Dashboard.webp" alt="PEARL - Skin Care Shop" class="banner-img" />
+    </div>
+    <section class="services">
+        <h2>Our Services</h2>
+        <div class="service-list">
+            <div class="service">
+                <img src="~/Images/Cleanser1.jpg" alt="Service 1">
+                <h3>Custom Skincare Plans</h3>
+                <p>Personalized skincare routines tailored to your needs.</p>
+            </div>
+            <div class="service">
+                <img src="~/Images/Moisturizer1.jpg" alt="Service 2">
+                <h3>Natural Ingredients</h3>
+                <p>Only the finest natural ingredients for your skin.</p>
+            </div>
+            <div class="service">
+                <img src="~/Images/Toner1.jpg" alt="Service 3">
+                <h3>Expert Advice</h3>
+                <p>Get professional skincare advice from experts.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="about">
+        <h2>About Us</h2>
+        <p>We are committed to bringing you the best skincare products with high-quality natural ingredients.</p>
+    </section>
+
+    @* <section class="gallery"> *@
+    @*     <h2>Our Gallery</h2> *@
+    @*     <div class="gallery-images"> *@
+    @*         <img src="~/Images/Cleanser2.jpg" alt="Gallery 1"> *@
+    @*         <img src="~/Images/Cleanser3.jpg" alt="Gallery 2"> *@
+    @*         <img src="~/Images/Moisturizer2.jpg" alt="Gallery 3"> *@
+    @*         <img src="~/Images/Moisturizer3.jpg" alt="Gallery 4"> *@
+    @*     </div> *@
+    @* </section> *@
+
+    <footer>
+        <p>© 2025 Skincare Shop. All rights reserved.</p>
+    </footer>
+</body>
+</html>

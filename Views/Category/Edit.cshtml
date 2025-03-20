@@ -1,0 +1,85 @@
+﻿@model DataAcessLayer.Models.Category
+
+<div class="container mt-5">
+    <div class="card shadow-lg p-4">
+        <h2 class="text-center text-white mb-4">Edit Category</h2>
+        <form asp-action="Edit" method="post">
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label>Category Name</label>
+                <input asp-for="Name" class="form-control" required />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn-custom mt-3">✏️ Update</button>
+        </form>
+    </div>
+</div>
+<style>
+    body {
+        background: linear-gradient(135deg, #000, #ffc0cb);
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 60vh;
+        width: 400px;
+    }
+
+    .card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        text-align: center;
+    }
+
+    h2 {
+        color: #ffc0cb;
+    }
+
+    .btn-custom, .btn-danger-custom {
+        padding: 10px 15px;
+        border-radius: 6px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .btn-custom {
+        background: #ffc0cb;
+        border: none;
+        color: #000;
+    }
+
+        .btn-custom:hover {
+            background: #ff8fa3;
+        }
+
+    .btn-danger-custom {
+        background: #ff4d4d;
+        border: none;
+        color: #fff;
+    }
+
+        .btn-danger-custom:hover {
+            background: #d43f3f;
+        }
+
+    .form-group {
+        margin-bottom: 15px;
+        text-align: left;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 8px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+    }
+</style>

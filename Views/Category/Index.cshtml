@@ -1,0 +1,114 @@
+﻿@model IEnumerable<DataAcessLayer.Models.Category>
+
+<div class="container mt-5">
+    <div class="card shadow-lg p-4">
+        <h2 class="text-center mb-4">Categories</h2>
+        <div class="text-end mb-3">
+            <a asp-action="Create" class="btn-custom">➕ Add New Category</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover text-center">
+                <thead>
+                    <tr>
+                        <th>Category Name</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var category in Model)
+                    {
+                        <tr>
+                            <td>@category.Name</td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@category.Id" class="btn-custom">✏ Edit</a>
+                                <a asp-action="Delete" asp-route-id="@category.Id" class="btn-danger-custom">🗑 Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        background: linear-gradient(135deg, #222, #ffc0cb);
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        max-width: 95%;
+    }
+
+    .card {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(15px);
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        width: 100%;
+    }
+
+    h2 {
+        color: #333;
+        font-weight: bold;
+    }
+
+    .table {
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+        .table th, .table td {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .table th {
+            background: #ffb6c1;
+            color: #fff;
+            font-weight: bold;
+        }
+
+    .btn-custom {
+        background: #ffc0cb;
+        border: none;
+        color: #fff;
+        padding: 10px 15px;
+        border-radius: 6px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+        .btn-custom:hover {
+            background: #ff8fa3;
+            color: black;
+        }
+
+    .btn-danger-custom {
+        background: #ff4d4d;
+        border: none;
+        color: #fff;
+        padding: 10px 15px;
+        border-radius: 6px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+        .btn-danger-custom:hover {
+            background: #d43f3f;
+            color: black;
+        }
+</style>

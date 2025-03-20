@@ -1,0 +1,152 @@
+﻿@using DataAcessLayer.Models
+@model List<DataAcessLayer.Models.CartItem>
+
+@{
+    Layout = "_Layout";
+    var t = @ViewBag.TotalPrice;
+}
+
+@section CartIndex {
+    <div class="container mt-5">
+        <h2 class="mb-4 text-center cart-title">🛒 Your Shopping Cart</h2>
+
+        @if (Model != null && Model.Any())
+        {
+            <div class="table-responsive">
+                <table class="table cart-table">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="cart-item">
+                                    <img src="@Url.Content($"~/Images/{item.ImageUrl}")" class="cart-img" alt="@item.Name">
+                                    <span>@item.Name</span>
+                                </td>
+                                <td>@item.Price</td>
+                                <td>
+                                    <form method="post" asp-action="UpdateCart" asp-controller="Cart" class="cart-quantity-form">
+                                        <input type="hidden" name="id" value="@item.Id" />
+                                        <button type="submit" name="action" value="decrease" class="quantity-btn">-</button>
+                                        <strong>@item.Quantity</strong>
+                                        <button type="submit" name="action" value="increase" class="quantity-btn">+</button>
+                                    </form>
+                                </td>
+                                <td>@(item.Price * item.Quantity).ToString("C")</td>
+                                <td>
+                                    <form method="post" asp-action="RemoveFromCart" asp-controller="Cart">
+                                        <input type="hidden" name="id" value="@item.Id" />
+                                        <button type="submit" class="btn btn-danger remove-btn">Remove</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <p class="alert alert-warning text-center">Your cart is empty!</p>
+        }
+
+        <div class="cart-footer text-center mt-4">
+            @if (ViewBag.TotalPrice != null)
+            {
+                <h4 class="total-price">Total: <span>@ViewBag.TotalPrice.ToString("C")</span></h4>
+            }
+            @if (Model.Any())
+            {
+                <form asp-action="TotalOrder" asp-controller="Order" method="get">
+                    <input type="hidden" name="r" value="@Model.Sum(item => item.Price * item.Quantity)" />
+                    <button class="btn btn-danger checkout-btn">Order Now</button>
+                </form>
+            }
+            <a href="/Customer/Products" class="btn btn-secondary continue-shopping-btn">Continue Shopping</a>
+        </div>
+    </div>
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #000, #ffc0cb);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .cart-title {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .cart-table {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border-radius: 12px;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .cart-img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            margin-right: 10px;
+            border-radius: 8px;
+        }
+
+        .quantity-btn {
+            background: #ffc0cb;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .remove-btn {
+            background: #ff8fa3;
+            color: white;
+            border: none;
+            padding: 8px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .total-price {
+            font-size: 22px;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .checkout-btn, .continue-shopping-btn {
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: 0.3s;
+            margin: 10px;
+        }
+
+        .checkout-btn {
+            background-color: #ff8fa3;
+            color: white;
+        }
+
+        .continue-shopping-btn {
+            background-color: #444;
+            color: white;
+        }
+    </style>
+}

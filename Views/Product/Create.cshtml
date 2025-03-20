@@ -1,0 +1,85 @@
+﻿@model DataAcessLayer.Models.Product
+
+<div class="container mt-5">
+    <div class="card shadow-lg p-4">
+        <h2 class="text-center text-white mb-4">Add New Product</h2>
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label class="form-label">Product Name</label>
+                <input asp-for="Name" class="form-control" required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Description</label>
+                <input asp-for="Description" class="form-control" required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Price</label>
+                <input asp-for="Price" type="number" step="0.01" class="form-control" required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Stock</label>
+                <input asp-for="Stock" type="number" class="form-control" required />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CategoryId" class="control-label"></label>
+                <select asp-for="CategoryId" asp-items="ViewBag.CategoryId" class="form-control">
+                    <option value="">-- Choose Category --</option>
+                </select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Product Image</label>
+                <input type="file" name="ImageFile" class="form-control" required />
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">➕ Add Product</button>
+        </form>
+    </div>
+</div>
+
+<style>
+    body {
+        background: linear-gradient(135deg, #000, #ffc0cb);
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        width: 60%; /* تكبير الكونتينر */
+    }
+
+    .card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        width: 100%; /* جعلها أعرض */
+    }
+
+    h2 {
+        color: #ffc0cb;
+    }
+
+    .btn-primary {
+        background: #ffc0cb;
+        border: none;
+        color: #000;
+        font-weight: bold;
+        padding: 10px;
+        border-radius: 6px;
+        transition: 0.3s;
+    }
+
+        .btn-primary:hover {
+            background: #ff8fa3;
+        }
+</style>

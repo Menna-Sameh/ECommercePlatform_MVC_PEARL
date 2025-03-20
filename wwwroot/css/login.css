@@ -1,0 +1,146 @@
+﻿/* 🌟 استيراد الخط */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #000, #ffccdd);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+    /* 🌟 خلفية احترافية */
+    body::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: url('/images/background-pattern.svg') no-repeat center center/cover;
+        opacity: 0.15;
+    }
+
+/* 🌟 صندوق تسجيل الدخول */
+.auth-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-box {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    width: 650px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    animation: fadeInUp 0.7s ease-in-out;
+}
+
+/* 🌟 أنيميشن عند تحميل الصفحة */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 🌟 الهيدر */
+.auth-header h2 {
+    color: #222;
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.auth-header p {
+    color: #444;
+    font-size: 16px;
+    margin-bottom: 25px;
+}
+
+/* 🌟 تنسيق الإدخالات */
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+    .input-group input {
+        width: 100%;
+        padding: 14px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        font-size: 16px;
+        transition: 0.3s;
+        outline: none;
+        background: rgba(255, 255, 255, 0.7);
+    }
+
+        .input-group input:focus {
+            border-color: #ff99bb;
+            box-shadow: 0 0 12px rgba(255, 153, 187, 0.4);
+        }
+
+    /* 🌟 تأثير النصوص عند الكتابة */
+    .input-group label {
+        position: absolute;
+        top: 50%;
+        left: 14px;
+        transform: translateY(-50%);
+        color: #777;
+        font-size: 15px;
+        pointer-events: none;
+        transition: 0.3s;
+    }
+
+    .input-group input:focus + label,
+    .input-group input:not(:placeholder-shown) + label {
+        top: 8px;
+        left: 12px;
+        font-size: 13px;
+        color: #ff99bb;
+    }
+
+/* 🌟 زر تسجيل الدخول */
+.auth-btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #000, #ff99bb);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+    .auth-btn:hover {
+        background: linear-gradient(135deg, #222, #ff6699);
+        transform: scale(1.03);
+    }
+
+/* 🌟 رابط تسجيل حساب جديد */
+.auth-footer {
+    margin-top: 20px;
+    font-size: 15px;
+}
+
+    .auth-footer a {
+        color: #ff6699;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+        .auth-footer a:hover {
+            text-decoration: underline;
+        }

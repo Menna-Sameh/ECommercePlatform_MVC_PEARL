@@ -1,0 +1,60 @@
+﻿@model DataAcessLayer.Models.ViewModels.RegisterViewModel
+@{
+    Layout = "_AuthLayout";
+}
+
+<link rel="stylesheet" href="~/css/register.css" />
+
+<div class="auth-container">
+    <div class="auth-box">
+        <div class="auth-header">
+            <h2>Welcome! Create an Account</h2>
+            <p>Join our platform and explore new opportunities.</p>
+        </div>
+
+        <form asp-action="Register" method="post">
+            <div class="input-group">
+                <input asp-for="UserName" type="text" required />
+                <label>Username</label>
+            </div>
+
+            <div class="input-group">
+                <input asp-for="Email" type="email" required />
+                <label>Email</label>
+            </div>
+
+            <div class="input-group">
+                <input asp-for="FullName" type="text" required />
+                <label>Full Name</label>
+            </div>
+
+            <div class="input-group">
+                <input asp-for="PhoneNumber" type="tel" required />
+                <label>Phone Number</label>
+            </div>
+
+            <div class="input-group">
+                <input asp-for="Password" type="password" required />
+                <label>Password</label>
+            </div>
+
+            <div class="input-group">
+                <input asp-for="ConfirmPassword" type="password" required />
+                <label>Confirm Password</label>
+            </div>
+
+            <div class="input-group">
+                <select asp-for="Role" required>
+                    <option value="" disabled selected>Select Role</option>
+                    <option value="Admin">Admin</option>
+                    <option value="Buyer">Buyer</option>
+                    <option value="Customer">Customer</option>
+                </select>
+            </div>
+
+            <button type="submit" class="auth-btn">Create Account</button>
+
+            <p class="auth-footer">Already have an account? <a asp-action="Login">Login here</a></p>
+        </form>
+    </div>
+</div>

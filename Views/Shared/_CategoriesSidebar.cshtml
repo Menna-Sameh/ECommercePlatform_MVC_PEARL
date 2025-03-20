@@ -1,0 +1,51 @@
+﻿@using DataAcessLayer.Models
+@model List<DataAcessLayer.Models.CategoryViewModel>
+
+<div class="sidebar">
+    <h3>Categories</h3>
+    <ul>
+        @foreach (var category in 
+        Model)
+        {
+            <li>
+                <a asp-controller="Customer" asp-action="ProductsByCategory" asp-route-categoryId="@category.Id">
+                    @category.Name
+                </a>
+            </li>
+        }
+    </ul>
+</div>
+
+<style>
+    .sidebar {
+        width: 250px;
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 8px;
+    }
+
+        .sidebar h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            margin-bottom: 8px;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #007bff;
+            font-size: 16px;
+        }
+
+            .sidebar a:hover {
+                color: #0056b3;
+                text-decoration: underline;
+            }
+</style>

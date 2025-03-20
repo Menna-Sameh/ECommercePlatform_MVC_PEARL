@@ -1,0 +1,83 @@
+﻿@model decimal
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="form-container">
+    <div class="form-box">
+        <h2 class="total-price">Total Amount</h2>
+        <h1 class="amount">@Model.ToString("C")</h1>
+
+        <form asp-action="CreateCheckoutSession" asp-controller="Order" method="post">
+            <input type="hidden" name="totalAmount" value="@Model" />
+            <button class="btn-custom">Proceed to Checkout</button>
+        </form>
+    </div>
+</div>
+
+<style>
+    body {
+        background: linear-gradient(135deg, #000, #ffc0cb);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .total-price {
+        font-size: 22px;
+        color: #fff;
+        font-weight: bold;
+    }
+    .form-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin-bottom:300px;
+    }
+
+    .form-box {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        width: 400px;
+        text-align: center;
+    }
+
+        .form-box h2 {
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+    .amount {
+        font-size: 28px;
+        font-weight: bold;
+        color: #ffc0cb;
+        margin-bottom: 20px;
+    }
+
+    .btn-custom {
+        background: #ffc0cb;
+        border: none;
+        color: #000;
+        padding: 12px;
+        width: 100%;
+        border-radius: 8px;
+        font-weight: bold;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+        .btn-custom:hover {
+            background: #ff8fa3;
+            color:white;
+        }
+</style>

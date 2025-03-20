@@ -1,0 +1,42 @@
+﻿@model IEnumerable<DataAcessLayer.Models.Product>
+@{
+    Layout = "_Layout";
+
+}
+@section Product{
+<h2>Products</h2>
+<a asp-action="Create" class="btn btn-primary">Add New Product</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Price</td>
+                <td>@(product.Category != null ? product.Category.Name : "No Category")</td>
+                <td>
+                    <a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@product.Id" class="btn btn-primary">
+                        🛒Add to Cart
+                    </a>
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@product.Id" class="btn btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@product.Id" class="btn btn-danger">Delete</a>
+                    <a asp-controller="Product" asp-action="Details" asp-route-id="@product.Id" class="btn btn-primary">
+                        View Details
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+}

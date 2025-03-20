@@ -1,0 +1,46 @@
+﻿@model DataAcessLayer.Models.Order
+
+@{
+    Layout = "_Layout";
+}
+@section OrderDetails {
+
+<div class="container mt-5">
+    <h2 class="mb-4">Order Details</h2>
+
+    <div class="card p-3 mb-4">
+        <h4>Order ID: @Model.Id</h4>
+        <p><strong>Order Date:</strong> @Model.OrderDate.ToString("dd MMM yyyy")</p>
+            <p><strong>Total Amount:</strong> @(Model.OrderItems.Sum(i => i.Price * i.Quantity).ToString("C"))</p>
+
+    </div>
+
+    <h4>Products in Order:</h4>
+    <table class="table table-bordered mt-3">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.OrderItems)
+            {
+                <tr>
+                    <td>@item.Product.Name</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.Price.ToString("C")</td>
+                        <td>@((item.Price * item.Quantity).ToString("C"))</td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+        <a asp-controller="Customer" asp-action="Products" class="btn btn-secondary">Continue Shopping</a>
+
+</div>
+
+}

@@ -1,0 +1,21 @@
+﻿@using DataAcessLayer.Models
+@model List<DataAcessLayer.Models.CartItem>
+
+<div class="cart-sidebar">
+    <h3>Shopping Cart 🛒</h3>
+    <ul class="cart-items">
+        @foreach (var item in Model)
+        {
+            <li class="cart-item">
+                <img src="~/Images/@item.ImageUrl" alt="@item.Name" class="cart-image" />
+                <div class="cart-details">
+                    <p>@item.Name</p>
+                    <p>Qty: @item.Quantity</p>
+                    <p>Price: $@(item.Price * item.Quantity)</p>
+                </div>
+                <button class="remove-btn" data-id="@item.Id">❌</button>
+            </li>
+        }
+    </ul>
+    <p class="cart-total">Total: <strong>$@ViewBag.TotalPrice</strong></p>
+</div>

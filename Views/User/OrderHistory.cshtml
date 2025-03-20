@@ -1,0 +1,29 @@
+﻿@model List<DataAcessLayer.Models.Order>
+
+@{
+    ViewData["Title"] = "Order";
+}
+
+<h2 class="text-center">سجل الطلبات</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>رقم الطلب</th>
+            <th>التاريخ</th>
+            <th>الحالة</th>
+            <th>المجموع</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>@order.Id</td>
+                <td>@order.OrderDate.ToShortDateString()</td>
+                <td>@order.Status</td>
+                <td>@order.TotalPrice.ToString("C")</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,36 @@
+﻿@model List<DataAcessLayer.Models.Order>
+
+@{
+    Layout = "_Layout";
+}
+@section MyOrder {
+<h2 class="text-center mt-4">🛍️ My Orders</h2>
+
+    @if (Model == null || !Model.Any())
+    {
+        <p class="alert alert-warning text-center">You haven't placed any orders yet!</p>
+    }
+    else
+    {
+        @foreach (var order in Model)
+        {
+            <div class="order-card">
+                <h4>Order #@order.Id - @order.OrderDate.ToString("dd MMM yyyy")</h4>
+                <p>Status: <strong>@order.Status</strong></p>
+                <p>Total: <strong>@(order.OrderItems.Sum(i => i.Price * i.Quantity).ToString("C"))</strong></p>
+                <hr />
+                <ul>
+                    @foreach (var item in order.OrderItems)
+                    {
+                        <li>
+                            <img src="~/Images/@item.Product.ImageUrl" alt="@item.Product.Name" class="order-img" />
+                            <span>@item.Product.Name (x @item.Quantity)</span>
+                            <span>@(item.Price * item.Quantity) $</span>
+                        </li>
+                    }
+                </ul>
+            </div>
+        }
+    }
+
+}
