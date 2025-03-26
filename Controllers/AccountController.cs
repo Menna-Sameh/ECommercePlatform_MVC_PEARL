@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-[Authorize] // تأكدي أن المستخدم لازم يكون مسجل دخول
+[Authorize] 
 public class AccountController : Controller
 {
     private readonly UserManager<ApplicationUser> _userManager;

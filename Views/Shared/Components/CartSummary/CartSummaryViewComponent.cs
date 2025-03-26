@@ -9,7 +9,7 @@ namespace PresentationLayer.Views.Shared.Components.CartSummary
         public IViewComponentResult Invoke()
         {
             var cart = GetCart();
-            int itemCount = cart.Sum(item => item.Quantity); // إجمالي عدد المنتجات في السلة
+            int itemCount = cart.Sum(item => item.Quantity);
             return View(itemCount);
         }
 

@@ -143,7 +143,7 @@ namespace PresentationLayer.Controllers
             };
 
             _context.Orders.Add(order);
-            _context.CartItems.RemoveRange(cartItems); // حذف المنتجات من الكارت
+            _context.CartItems.RemoveRange(cartItems); 
             _context.SaveChanges();
 
             TempData["Success"] = "Order placed successfully!";

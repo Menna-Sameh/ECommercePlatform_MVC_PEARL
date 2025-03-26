@@ -65,7 +65,7 @@
             }
             @if (Model.Any())
             {
-                <form asp-action="TotalOrder" asp-controller="Order" method="get">
+                <form asp-action="TotalOrder" asp-controller="Order" method="post">
                     <input type="hidden" name="r" value="@Model.Sum(item => item.Price * item.Quantity)" />
                     <button class="btn btn-danger checkout-btn">Order Now</button>
                 </form>

@@ -115,7 +115,7 @@ namespace PresentationLayer.Controllers
         Categories = categories
     };
 
-    return View("Products", viewModel); // إعادة استخدام نفس الـ View
+    return View("Products", viewModel); 
 }
 
 
@@ -129,13 +129,11 @@ namespace PresentationLayer.Controllers
                 return Json(new { success = false, message = "Product not found" });
             }
 
-            // احضر السلة من الـ Session أو أنشئ سلة جديدة
             List<int> cart = HttpContext.Session.GetObject<List<int>>("Cart") ?? new List<int>();
 
-            // أضف المنتج إلى السلة
+          
             cart.Add(productId);
 
-            // احفظ السلة في الـ Session
             HttpContext.Session.SetObject("Cart", cart);
 
             return Json(new { success = true, message = "Product added to cart!" });
@@ -160,7 +158,7 @@ namespace PresentationLayer.Controllers
                 ImageUrl = product.ImageUrl
             };
 
-            return View(productViewModel); // 🟢 إرسال `ProductViewModel` للـ View
+            return View(productViewModel); 
         }
 
 

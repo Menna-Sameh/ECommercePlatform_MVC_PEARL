@@ -28,7 +28,7 @@ namespace PresentationLayer.Controllers
             {
                 auth_token = token,
                 delivery_needed = "false",
-                amount_cents = "10000", // المبلغ بالمليمات (هنا 100 جنيه)
+                amount_cents = "10000", 
                 currency = "EGP",
                 items = new object[] { }
             };
@@ -74,11 +74,11 @@ namespace PresentationLayer.Controllers
         {
             if (response.success == true)
             {
-                return View("Success"); // هتعملي View لنجاح الدفع
+                return View("Success");
             }
             else
             {
-                return View("Failed"); // هتعملي View للفشل
+                return View("Failed"); 
             }
         }
 

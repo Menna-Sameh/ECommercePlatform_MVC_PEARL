@@ -153,30 +153,25 @@
 
         }
 
-        /* تحريك الهيدر عند التحميل */
         header {
             animation: fadeInDown 1s ease-in-out;
         }
 
-        /* زر "Shop Now" ينبض */
         .hero button {
             animation: pulse 2s infinite;
         }
 
-        /* تحريك الصور عند التمرير */
         .service img, .gallery img {
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 1s ease-out, transform 1s ease-out;
         }
 
-            /* تأثير يظهر عند التمرير */
             .service img.show, .gallery img.show {
                 opacity: 1;
                 transform: translateY(0);
             }
 
-            /* تأثير عند تمرير الماوس */
             .service img:hover, .gallery img:hover {
                 transform: scale(1.1);
                 transition: transform 0.3s ease-in-out;
@@ -199,7 +194,10 @@
         <div class="hero">
             <h2>Discover the Beauty of Personalized Skincare</h2>
             <p>Get the best skincare products tailored just for you!</p>
-            <button>Shop Now</button>
+            <form asp-controller="Customer" asp-action="Products">
+                <button type="submit" class="btn hero">Shop Now</button>
+            </form>
+
         </div>
     </header>
     <div class="banner-container"> 
@@ -252,7 +250,7 @@
             }
 
             window.addEventListener("scroll", showImagesOnScroll);
-            showImagesOnScroll(); // للتأكد من تحميل الصور الظاهرة فورًا
+            showImagesOnScroll(); 
         });
     </script>
 

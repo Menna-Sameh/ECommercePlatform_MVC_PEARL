@@ -12,14 +12,14 @@ using System.Text.Json;
 
 namespace PresentationLayer.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class OrderController : Controller
     {
         private readonly ApplicationDbContext _context;
         private const string CartSessionKey = "ShoppingCart";
         private IUnitOfWork UnitOfWork;
 
-        public OrderController(ApplicationDbContext context,IUnitOfWork unitOfWork)
+        public OrderController(ApplicationDbContext context, IUnitOfWork unitOfWork)
         {
             _context = context;
             UnitOfWork = unitOfWork;
@@ -37,7 +37,7 @@ namespace PresentationLayer.Controllers
             var orders = _context.Orders
                 .Where(o => o.UserId == userId)
                 .Include(o => o.OrderItems)
-                .ThenInclude(oi => oi.Product) // التأكد من جلب المنتجات مع الطلبات
+                .ThenInclude(oi => oi.Product) 
                 .OrderByDescending(o => o.OrderDate)
                 .ToList();
 
@@ -59,7 +59,6 @@ namespace PresentationLayer.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-            // جلب المنتجات من الـ Session
             var cartItemsJson = HttpContext.Session.GetString("CartSessionKey");
             if (string.IsNullOrEmpty(cartItemsJson))
             {
@@ -68,7 +67,6 @@ namespace PresentationLayer.Controllers
                 return RedirectToAction("Index", "Cart");
             }
 
-            // تحويل البيانات من JSON إلى قائمة `CartItem`
             var cartItems = JsonSerializer.Deserialize<List<CartItem>>(cartItemsJson);
 
             if (cartItems == null || !cartItems.Any())
@@ -78,7 +76,6 @@ namespace PresentationLayer.Controllers
                 return RedirectToAction("Index", "Cart");
             }
 
-            // جلب بيانات المنتجات من قاعدة البيانات
             var orderItems = new List<OrderItem>();
             foreach (var item in cartItems)
             {
@@ -101,7 +98,6 @@ namespace PresentationLayer.Controllers
                 return RedirectToAction("Index", "Cart");
             }
 
-            // إنشاء الطلب
             var order = new Order
             {
                 UserId = userId,
@@ -112,7 +108,6 @@ namespace PresentationLayer.Controllers
             _context.Orders.Add(order);
             await _context.SaveChangesAsync();
 
-            // مسح السلة من الـ Session
             HttpContext.Session.Remove("CartSessionKey");
 
             Console.WriteLine("Order placed successfully!");
@@ -150,7 +145,7 @@ namespace PresentationLayer.Controllers
         [HttpPost]
         public IActionResult CreateCheckoutSession(decimal totalAmount)
         {
-            var domain = "https://localhost:7177"; // استبدليها بـ URL الفعلي عند النشر
+            var domain = "https://localhost:7177"; 
 
             var options = new SessionCreateOptions
             {
@@ -162,7 +157,7 @@ namespace PresentationLayer.Controllers
                         PriceData = new SessionLineItemPriceDataOptions
                         {
                             Currency = "usd",
-                            UnitAmount = (long)(totalAmount * 100), // تحويل إلى سنتات
+                            UnitAmount = (long)(totalAmount * 100), 
                             ProductData = new SessionLineItemPriceDataProductDataOptions
                             {
                                 Name = "Order Payment"

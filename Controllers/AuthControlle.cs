@@ -49,13 +49,11 @@ public class AuthController : Controller
         var result = await _signInManager.PasswordSignInAsync(user, model.Password, model.RememberMe, lockoutOnFailure: true);
         if (result.Succeeded)
         {
-            // 🔥 تحميل الأدوار في الجلسة بعد تسجيل الدخول
             await _signInManager.SignInAsync(user, isPersistent: model.RememberMe);
 
             var roles = await _userManager.GetRolesAsync(user);
             string role = roles.FirstOrDefault() ?? "Customer";
 
-            // 🔍 طباعة معلومات المستخدم في الكونسول لمراجعة الصلاحيات
             Console.WriteLine($"🔎 User {user.UserName} has roles: {string.Join(", ", roles)}");
 
             return role switch
@@ -112,7 +110,6 @@ public class AuthController : Controller
             return View(model);
         }
 
-        // 🔎 تأكد من أن الدور موجود، وإن لم يكن، أنشئه
         if (!await _roleManager.RoleExistsAsync(userRole))
         {
             var roleResult = await _roleManager.CreateAsync(new IdentityRole(userRole));
@@ -123,7 +120,6 @@ public class AuthController : Controller
             }
         }
 
-        // 🔥 أضف المستخدم إلى الدور وتأكدي من نجاح العملية
         var roleAssignmentResult = await _userManager.AddToRoleAsync(user, userRole);
         if (!roleAssignmentResult.Succeeded)
         {

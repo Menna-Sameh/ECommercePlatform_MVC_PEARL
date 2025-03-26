@@ -38,7 +38,7 @@ namespace PresentationLayer
             {
                 options.AddPolicy("Admin", policy => policy.RequireRole("Admin"));
             });
-            builder.Services.AddScoped<IFileService, FileServices>();
+            builder.Services.AddScoped<IFileservice,FileServices>();
 
 
             builder.Services.AddAuthentication();

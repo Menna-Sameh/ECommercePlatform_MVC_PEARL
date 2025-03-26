@@ -1,13 +1,93 @@
 ﻿@model DataAcessLayer.Models.Product
 
-<h2>Edit Product</h2>
-<form asp-action="Edit">
-    <input type="hidden" asp-for="Id" />
-    <label>Name</label>
-    <input asp-for="Name" class="form-control" />
+<div class="container mt-5">
+    <div class="card shadow-lg p-4">
+        <h2 class="text-center text-white mb-4">Edit Product</h2>
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Id" />
 
-    <label>Price</label>
-    <input asp-for="Price" class="form-control" />
+            <div class="mb-3">
+                <label class="form-label">Product Name</label>
+                <input asp-for="Name" class="form-control" required />
+            </div>
 
-    <button type="submit" class="btn btn-success">Save</button>
-</form>
+            <div class="mb-3">
+                <label class="form-label">Description</label>
+                <input asp-for="Description" class="form-control" required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Price</label>
+                <input asp-for="Price" type="number" step="0.01" class="form-control" required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Stock</label>
+                <input asp-for="Stock" type="number" class="form-control" required />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CategoryId" class="control-label"></label>
+                <select asp-for="CategoryId" asp-items="ViewBag.CategoryId" class="form-control">
+                    <option value="">-- Choose Category --</option>
+                </select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Current Image</label>
+                <br />
+                <img src="~/Images/@Model.ImageUrl" alt="Product Image" class="img-thumbnail" width="200">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Change Image (optional)</label>
+                <input type="file" asp-for="formfile" class="form-control" />
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">✏️ Update Product</button>
+        </form>
+    </div>
+</div>
+
+<style>
+    body {
+        background: linear-gradient(135deg, #000, #ffc0cb);
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        width: 60%;
+    }
+
+    .card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        width: 100%;
+    }
+
+    h2 {
+        color: #ffc0cb;
+    }
+
+    .btn-primary {
+        background: #ffc0cb;
+        border: none;
+        color: #000;
+        font-weight: bold;
+        padding: 10px;
+        border-radius: 6px;
+        transition: 0.3s;
+    }
+
+        .btn-primary:hover {
+            background: #ff8fa3;
+        }
+</style>

@@ -21,7 +21,7 @@ namespace PresentationLayer.Controllers
             return View(categories);
         }
 
-        // 🔹 Create Category
+       
         public IActionResult Create()
         {
             return View();
@@ -40,7 +40,7 @@ namespace PresentationLayer.Controllers
             try
             {
                 await _unitOfWork.Categories.AddAsync(category);
-                int result = await _unitOfWork.SaveAsync(); // التحقق من نجاح الحفظ
+                int result = await _unitOfWork.SaveAsync(); 
 
                 if (result > 0)
                 {
@@ -61,7 +61,6 @@ namespace PresentationLayer.Controllers
         }
 
 
-        // 🔹 Edit Category
         public async Task<IActionResult> Edit(int id)
         {
             var category = await _unitOfWork.Categories.GetByIdAsync(id);
@@ -85,7 +84,7 @@ namespace PresentationLayer.Controllers
             try
             {
                 _unitOfWork.Categories.Update(category);
-                int result = await _unitOfWork.SaveAsync(); // التحقق من نجاح الحفظ
+                int result = await _unitOfWork.SaveAsync(); 
 
                 if (result > 0)
                 {
@@ -106,7 +105,6 @@ namespace PresentationLayer.Controllers
         }
 
 
-        // 🔹 Delete Category
         public async Task<IActionResult> Delete(int id)
         {
             var category = await _unitOfWork.Categories.GetByIdAsync(id);

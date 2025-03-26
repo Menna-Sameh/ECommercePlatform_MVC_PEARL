@@ -13,7 +13,6 @@ public class UserController : Controller
         _unitOfWork = unitOfWork;
     }
 
-    // ✅ عرض الملف الشخصي
     public async Task<IActionResult> Profile()
     {
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -28,10 +27,10 @@ public class UserController : Controller
             return NotFound();
         }
 
-        return View(user); // 🔹 يعرض صفحة الملف الشخصي
+        return View(user); 
     }
 
-    // ✅ عرض سجل الطلبات
+    
     [Authorize(Roles = "Customer")]
     public async Task<IActionResult> OrderHistory()
     {
@@ -42,7 +41,7 @@ public class UserController : Controller
         }
 
         var orders = await _unitOfWork.GetRepository<Order>().GetAllAsync(o => o.UserId == userId);
-        return View(orders); // 🔹 يعرض الطلبات الخاصة بالمستخدم
+        return View(orders); 
     }
 
 
